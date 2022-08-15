@@ -1,0 +1,4 @@
+package car
+
+interface Motor {
+}
