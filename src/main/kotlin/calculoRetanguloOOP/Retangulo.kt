@@ -1,0 +1,4 @@
+package calculoRetanguloOOP
+
+class Retangulo {
+}
