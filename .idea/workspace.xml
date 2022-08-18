@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="baf2d42e-8449-473a-bce4-ca6d20ca7032" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Roadmap-Creditas.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/account/Account.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/account/main.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/animal/Animal.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/animal/Bat.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/animal/Bird.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/animal/Dog.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/animal/Einstein.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/animal/Hawk.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/animal/Human.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/animal/Mammal.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/animal/Penguim.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/animal/Platypus.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/animal/Reptile.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/animal/Snake.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/animal/Whale.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/animal/main.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/calculoRetangulo/main.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/calculoRetanguloOOP/Retangulo.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/calculoRetanguloOOP/main.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/car/EletricEngine.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/car/FlexEngine.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/car/GasEngine.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/car/GasolineEngine.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/car/HydrogenEngine.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/car/Motor.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/car/Vehicle.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/car/main.kt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KotlinCodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2DPolgIHGIXbVE9z3Hhw1mRav9q" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "true",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "/home/onboarding/Desktop/andre/ROADMAP/Roadmap-Creditas",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "com.intellij.jarRepository.settings.RemoteRepositoriesConfigurable"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="calculadoraKotestTest" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Kotlin.MainKt">
+    <configuration name="SomaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Roadmap-Creditas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="testeIntroducao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="testeIntroducao" />
+      <option name="MAIN_CLASS_NAME" value="testeIntroducao.SomaTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainKt" type="JetRunConfigurationType" temporary="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="Kotlin SDK" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="animal.MainKt" />
+      <shortenClasspath name="NONE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculadoraTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Roadmap-Creditas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="calculadoraKotestTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="calculadoraKotestTest" />
+      <option name="MAIN_CLASS_NAME" value="calculadoraKotestTest.CalculadoraTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.CalculadoraTest" />
+        <item itemvalue="Kotlin.MainKt" />
+        <item itemvalue="JUnit.SomaTest" />
+        <item itemvalue="Kotlin.MainKt" />
+        <item itemvalue="JUnit.SomaTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="baf2d42e-8449-473a-bce4-ca6d20ca7032" name="Changes" comment="" />
+      <created>1660610234482</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1660610234482</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
