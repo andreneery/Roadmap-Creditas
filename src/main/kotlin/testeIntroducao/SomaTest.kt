@@ -1,7 +1,8 @@
 package testeIntroducao
 
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Test
+
+import org.testng.Assert.assertEquals
+import org.testng.annotations.Test
 
 class SomaTest {
     private val soma = Soma()
