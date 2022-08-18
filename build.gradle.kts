@@ -13,6 +13,8 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation(kotlin("stdlib"))
+    testImplementation("io.kotlintest:kotlintest-runner-junit5:3.1.7")
 }
 
 tasks.test {
@@ -21,4 +23,8 @@ tasks.test {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }

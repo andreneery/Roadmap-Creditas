@@ -1,7 +1,9 @@
 package calculadoraKotestTest
 
+import calculadoraKotest.Calculadora
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
+
 
 val calculadora = Calculadora()
 
