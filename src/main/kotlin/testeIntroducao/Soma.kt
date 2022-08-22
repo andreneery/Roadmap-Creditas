@@ -1,6 +1,6 @@
 package testeIntroducao
 
-open class Soma {
+class Soma {
 
     fun somar(num1: Int, num2: Int): Int {
 
