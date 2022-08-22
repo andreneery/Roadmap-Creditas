@@ -11,7 +11,7 @@ class CalculadoraTest(){
     fun `verificando a operacao de soma`(){
         val expected = 15
 
-        assertEquals(experted, calculadora.soma(7,8))
+        assertEquals(expected, calculadora.soma(7,8))
     }
 
     @Test
