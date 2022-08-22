@@ -1,6 +1,5 @@
 package testeIntroducao
 
-
 import org.testng.Assert.assertEquals
 import org.testng.annotations.Test
 
