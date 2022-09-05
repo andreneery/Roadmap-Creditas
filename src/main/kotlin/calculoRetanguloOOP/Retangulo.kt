@@ -1,6 +1,6 @@
 package calculoRetanguloOOP
 
-open class Retangulo(
+class Retangulo(
     var width: Int,
     var height: Int,
     var color: String
