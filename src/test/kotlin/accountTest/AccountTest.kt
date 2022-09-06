@@ -3,10 +3,11 @@ package accountTest
 import account.Account
 import io.kotlintest.shouldBe
 import org.junit.jupiter.api.Test
+import java.lang.Error
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
-class AccountTest(){
+class AccountTest{
 
     @Test
     fun `verificando a instancializacao`(){
@@ -27,10 +28,11 @@ class AccountTest(){
             conta = 1,
             saldoInicial = 0.0
         )
-        account.deposita(100.0)
-        val expected = account.saldo.shouldBe(100.0)
+        val expected = 100.0
 
-        assertEquals(expected, account.deposita(100.0))
+        account.deposita(100.0)
+
+        assertEquals(expected, account.saldo)
     }
 
     @Test
@@ -40,10 +42,12 @@ class AccountTest(){
             conta = 1,
             saldoInicial = 50.0
         )
-        account.deposita(100.0)
-        val expected = account.saldo.shouldBe(150.0)
 
-        assertEquals(expected, account.deposita(100.0))
+        val expected = 150.0
+
+        account.deposita(100.0)
+
+        assertEquals(expected, account.saldo)
     }
 
     @Test
@@ -53,11 +57,14 @@ class AccountTest(){
             conta = 1,
             saldoInicial = 0.0
         )
-        val function = account.deposita(-100.0)
-        val expected = account.saldo.shouldBe(0.0)
+        val expected = 0.0
 
-        assertFailsWith<Throwable> {error("valor não permitido")}
-        assertEquals(expected, function)
+        val error = assertFailsWith<Throwable> {
+            account.deposita(-200.0)
+        }
+
+        assertEquals(error.message, "valor não permitido")
+        assertEquals(expected, account.saldo)
     }
 
     @Test
@@ -67,23 +74,32 @@ class AccountTest(){
             conta = 1,
             saldoInicial = 50.0
         )
-        val expected = account.saldo.shouldBe(50.0)
+        val expected = 50.0
 
-        assertEquals(expected, account.deposita(-100.0))
-        assertFailsWith<Throwable> {throw error("valor não permitido")}
+        val error = assertFailsWith<Throwable> {
+            account.deposita(-100.0)
+        }
+
+        assertEquals(error.message, "valor não permitido")
+        assertEquals(expected, account.saldo)
+
     }
 
     @Test
-    fun `Quando depositado 10mil, espera que retorne um error`(){
+    fun `Quando depositado mais que 10mil, espera que retorne um error`(){
         val account = Account(
             titular = "Andre",
             conta = 1,
             saldoInicial = 0.0
         )
-        val expected = account.saldo.shouldBe(0.0)
+        val expected = 0.0
 
-        assertEquals(expected, account.deposita(10_000.0))
-        assertFailsWith<Throwable> {throw error("valor não permitido")}
+        val error = assertFailsWith<Throwable> {
+            account.deposita(10_100.0)
+        }
+
+        assertEquals(error.message, "valor não permitido")
+        assertEquals(expected, account.saldo)
     }
 
     @Test
@@ -93,10 +109,14 @@ class AccountTest(){
             conta = 1,
             saldoInicial = 50.00
         )
-        val expected = account.saldo.shouldBe(50.0)
+        val expected = 50.0
 
-        assertEquals(expected, account.deposita(10_000.0))
-        assertFailsWith<Throwable> {throw error("valor não permitido")}
+        val error = assertFailsWith<Throwable> {
+            account.deposita(10_100.0)
+        }
+
+        assertEquals(error.message, "valor não permitido")
+        assertEquals(expected, account.saldo)
     }
 
     @Test
@@ -107,10 +127,11 @@ class AccountTest(){
             saldoInicial = 200.00
         )
 
-        val operation = account.saque(150.0)
-        val expected = account.saldo.shouldBe(50.0)
+        val expected = 50.0
 
-        assertEquals(expected, operation)
+        account.saque(150.0)
+
+        assertEquals(expected, account.saldo)
     }
 
     @Test
@@ -120,25 +141,30 @@ class AccountTest(){
             conta = 1,
             saldoInicial = 0.0
         )
+        val expected = 0.0
+        val error = assertFailsWith<Throwable> {
+            account.saque(250.0)
+        }
 
-        val operation = account.saque(250.0)
-        val expected = throw error("valor para saque não permitido")
-
-        assertEquals(expected, operation)
+        assertEquals(error.message, "valor para saque não permitido")
+        assertEquals(expected, account.saldo)
     }
 
     @Test
-    fun `testando a funcao saque com saldo inicial`(){
+    fun `testando a funcao saque com valor superior que o saldo inicial `(){
         val account = Account(
             titular = "Andre",
             conta = 1,
             saldoInicial = 50.0
         )
+        val expected = 50.0
 
-        val operation = account.saque(250.0)
-        val expected = throw error("valor para saque não permitido")
+        val error = assertFailsWith<Throwable> {
+            account.saque(250.0)
+        }
 
-        assertEquals(expected, operation)
+        assertEquals(error.message, "valor para saque não permitido")
+        assertEquals(expected, account.saldo)
     }
 
     @Test
@@ -149,10 +175,14 @@ class AccountTest(){
             saldoInicial = 0.0
         )
 
-        val operation = account.saque(-250.0)
-        val expected = throw error("valor para saque não permitido")
+        val expected = 0.0
 
-        assertEquals(expected, operation)
+        val error = assertFailsWith<Throwable> {
+            account.saque(-250.0)
+        }
+
+        assertEquals(error.message, "valor para saque não permitido")
+        assertEquals(expected, account.saldo)
     }
 
     @Test
@@ -163,10 +193,14 @@ class AccountTest(){
             saldoInicial = 25.0
         )
 
-        val operation = account.saque(-250.0)
-        val expected = account.saldo.shouldBe(25.0)
+        val expected = 25.0
 
-        assertEquals(expected, operation)
+        val error = assertFailsWith<Throwable>{
+            account.saque(-250.0)
+        }
+
+        assertEquals(error.message, "valor para saque não permitido")
+        assertEquals(expected, account.saldo)
         //encontrado um bug na parte dos if na função saque
     }
 
@@ -184,10 +218,13 @@ class AccountTest(){
             saldoInicial = 50.0
         )
 
-        val operation = accountAndre.transferencia(500.0, accountJulia)
-        val expected = accountJulia.saldo.shouldBe(550.0).shouldBe(accountAndre.saldo.shouldBe(100.0))
+        val expectedAndre = 100.0
+        val expectedJulia = 550.0
 
-        assertEquals(expected, operation)
+        accountAndre.transferencia(500.0, accountJulia)
+
+        assertEquals(expectedAndre, accountAndre.saldo)
+        assertEquals(expectedJulia, accountJulia.saldo)
     }
 
     @Test
@@ -203,11 +240,17 @@ class AccountTest(){
             conta = 2,
             saldoInicial = 150.0
         )
+        val expectedJulia = 150.0
+        val expectedAndre = 600.0
 
-        val operation = accountAndre.transferencia(-500.0, accountJulia)
-        val expected = accountJulia.saldo.shouldBe(550.0).shouldBe(accountAndre.saldo.shouldBe(150.0))
 
-        assertEquals(expected, operation)
+        val error = assertFailsWith<Throwable> {
+            val function = accountAndre.transferencia(-500.0, accountJulia)
+        }
+
+        assertEquals(error.message, "valor para tranferência não permitida")
+        assertEquals(expectedJulia, accountJulia.saldo)
+        accountAndre.saldo.shouldBe(expectedAndre)
     }
 
     @Test
@@ -224,10 +267,16 @@ class AccountTest(){
             saldoInicial = 150.0
         )
 
-        val operation = accountAndre.transferencia(10_000.0, accountJulia)
-        val expected = accountJulia.saldo.shouldBe(550.0).shouldBe(accountAndre.saldo.shouldBe(150.0))
+        val expectAndre = 600.0
+        val expectJulia = 150.0
 
-        assertEquals(expected, operation)
+        val error = assertFailsWith<Throwable> {
+            accountAndre.transferencia(1_000.0, accountJulia)
+        }
+
+        assertEquals(error.message, "saldo em conta insuficiente")
+        assertEquals(expectAndre, accountAndre.saldo)
+        assertEquals(expectJulia, accountJulia.saldo)
     }
 
     @Test
@@ -244,9 +293,15 @@ class AccountTest(){
             saldoInicial = 50.0
         )
 
-        val operation = accountAndre.transferencia(1_000.0, accountJulia)
-        val expected = accountJulia.saldo.shouldBe(50.0).shouldBe(accountAndre.saldo.shouldBe(200.0))
+        val expectAndre = 200.0
+        val expectJulia = 50.0
 
-        assertEquals(expected, operation)
+        val error = assertFailsWith<Throwable> {
+            accountAndre.transferencia(1_000.0, accountJulia)
+        }
+
+        assertEquals(error.message, "saldo em conta insuficiente")
+        assertEquals(expectAndre, accountAndre.saldo)
+        assertEquals(expectJulia, accountJulia.saldo)
     }
 }

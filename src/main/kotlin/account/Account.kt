@@ -1,6 +1,6 @@
 package account
 
-open class Account(
+class Account(
     val titular: String,
     val conta: Int,
     val saldoInicial: Double
@@ -12,23 +12,23 @@ open class Account(
 
     fun deposita(valor: Double){
 
-        if(valor > 0 && valor <= 10_000){
+        if(valor > 0.0 && valor <= 10_000.0){
             this.saldo += valor
         } else{
-            this.saldo += (valor)
             throw error("valor não permitido")
         }
     }
 
     fun saque(valor: Double){
         if(valor <= saldo){
-            this.saldo -= valor;
-
-            if(valor < 0){
-                throw error("valor para saque não permitido")
-                this.saldo += valor;
+            if(valor > 0.0){
+                this.saldo -= valor
             }
-        } else{
+            else{
+                throw error("valor para saque não permitido")
+            }
+        }
+        else{
             throw error("valor para saque não permitido")
         }
     }
@@ -38,13 +38,12 @@ open class Account(
         if (valor > 0.0 && valor < 10_000.0) {
             if (valor <= saldo && saldo > 0) {
                 this.saldo -= valor
+                conta.deposita(valor)
             } else {
                 throw error("saldo em conta insuficiente")
             }
         } else {
             throw error("valor para tranferência não permitida")
-            this.saldo += valor
         }
-        conta.deposita(valor)
     }
 }
