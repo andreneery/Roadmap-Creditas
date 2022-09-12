@@ -20,8 +20,7 @@ class Account(
     }
 
     fun saque(valor: Double){
-        if(valor <= saldo){
-            if(valor > 0.0){
+        if(valor <= saldo && valor > 0.0){
                 this.saldo -= valor
             }
             else{
