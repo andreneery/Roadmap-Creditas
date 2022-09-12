@@ -65,6 +65,7 @@ class AccountTest{
 
         assertEquals(error.message, "valor não permitido")
         assertEquals(expected, account.saldo)
+        // encontrado bug, que mesmo ele retornando o erro esperado, ele fazia o deposito mesmo assim
     }
 
     @Test
