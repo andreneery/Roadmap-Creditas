@@ -272,7 +272,7 @@ class AccountTest{
         val expectJulia = 150.0
 
         val error = assertFailsWith<Throwable> {
-            accountAndre.transferencia(1_000.0, accountJulia)
+            accountAndre.transferencia(10_000.1, accountJulia)
         }
 
         assertEquals(error.message, "saldo em conta insuficiente")
