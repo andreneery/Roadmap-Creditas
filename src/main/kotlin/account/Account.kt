@@ -24,25 +24,16 @@ class Account(
                 this.saldo -= valor
             }
             else{
-                throw error("valor para saque não permitido")
+                throw error("valor não permitido")
             }
         }
-        else{
-            throw error("valor para saque não permitido")
-        }
-    }
 
     fun transferencia(valor: Double, conta: Account) {
-
-        if (valor > 0.0 && valor < 10_000.0) {
-            if (valor <= saldo && saldo > 0) {
-                this.saldo -= valor
-                conta.deposita(valor)
-            } else {
-                throw error("saldo em conta insuficiente")
-            }
-        } else {
-            throw error("valor para tranferência não permitida")
+        if (saldo > 0){
+            saque(valor)
+            conta.deposita(valor)}
+        else {
+            throw error("saldo em conta insuficiente")
         }
     }
 }

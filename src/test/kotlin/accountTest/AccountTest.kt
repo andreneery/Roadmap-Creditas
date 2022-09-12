@@ -147,7 +147,7 @@ class AccountTest{
             account.saque(250.0)
         }
 
-        assertEquals(error.message, "valor para saque não permitido")
+        assertEquals(error.message, "valor não permitido")
         assertEquals(expected, account.saldo)
     }
 
@@ -164,7 +164,7 @@ class AccountTest{
             account.saque(250.0)
         }
 
-        assertEquals(error.message, "valor para saque não permitido")
+        assertEquals(error.message, "valor não permitido")
         assertEquals(expected, account.saldo)
     }
 
@@ -182,7 +182,7 @@ class AccountTest{
             account.saque(-250.0)
         }
 
-        assertEquals(error.message, "valor para saque não permitido")
+        assertEquals(error.message, "valor não permitido")
         assertEquals(expected, account.saldo)
     }
 
@@ -200,7 +200,7 @@ class AccountTest{
             account.saque(-250.0)
         }
 
-        assertEquals(error.message, "valor para saque não permitido")
+        assertEquals(error.message, "valor não permitido")
         assertEquals(expected, account.saldo)
         //encontrado um bug na parte dos if na função saque
     }
@@ -249,7 +249,7 @@ class AccountTest{
             val function = accountAndre.transferencia(-500.0, accountJulia)
         }
 
-        assertEquals(error.message, "valor para tranferência não permitida")
+        assertEquals(error.message, "valor não permitido")
         assertEquals(expectedJulia, accountJulia.saldo)
         accountAndre.saldo.shouldBe(expectedAndre)
     }
@@ -275,7 +275,7 @@ class AccountTest{
             accountAndre.transferencia(10_000.1, accountJulia)
         }
 
-        assertEquals(error.message, "saldo em conta insuficiente")
+        assertEquals(error.message, "valor não permitido")
         assertEquals(expectAndre, accountAndre.saldo)
         assertEquals(expectJulia, accountJulia.saldo)
     }
@@ -301,7 +301,7 @@ class AccountTest{
             accountAndre.transferencia(1_000.0, accountJulia)
         }
 
-        assertEquals(error.message, "saldo em conta insuficiente")
+        assertEquals(error.message, "valor não permitido")
         assertEquals(expectAndre, accountAndre.saldo)
         assertEquals(expectJulia, accountJulia.saldo)
     }
