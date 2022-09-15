@@ -6,10 +6,10 @@ class HydrogenEngine():Motor {
     }
 
     override fun useFlammelFuel(): Boolean {
-        return false
+        return true
     }
 
     override fun useFossilFuel(): Boolean {
-        return false
+        return true
     }
 }

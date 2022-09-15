@@ -6,7 +6,7 @@ open class GasolineEngine(): Motor {
     }
 
     override fun useFlammelFuel(): Boolean {
-        return false
+        return true
     }
 
     override fun useFossilFuel(): Boolean {
