@@ -268,7 +268,7 @@ class AccountTest{
             saldoInicial = 150.0
         )
 
-        val expectAndre = 600.0
+        val expectAndre = 15_000.0
         val expectJulia = 150.0
 
         val error = assertFailsWith<Throwable> {
