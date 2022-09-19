@@ -46,7 +46,7 @@ class FlexEngineTest {
 
     @Test
     fun `quando requisitado o metodo useFlammelFuel for alcool, espera que retorne true`() {
-        val flexEngine = FlexEngine("gasolina")
+        val flexEngine = FlexEngine("alcool")
         val expected = true
 
         assertEquals(expected, flexEngine.useFlammelFuel())
