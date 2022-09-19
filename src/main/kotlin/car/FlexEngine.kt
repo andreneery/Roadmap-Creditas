@@ -1,7 +1,20 @@
 package car
 
-class FlexEngine(): Motor{
+class FlexEngine(val option: String): Motor {
+
+    fun verifica(): String {
+        if(option == "alcool" || option == "gasolina"){
+            return option
+        } else {
+            return throw error("combustível não permitido")
+        }
+    }
+
     override fun isEnvironmentalFriendly(): Boolean {
+        verifica()
+        if (option == "gasolina") {
+            return false
+        }
         return true
     }
 
@@ -10,7 +23,9 @@ class FlexEngine(): Motor{
     }
 
     override fun useFossilFuel(): Boolean {
+        if (option == "gasolina") {
+            return true
+        }
         return false
     }
-
 }

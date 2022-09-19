@@ -10,6 +10,6 @@ class GasEngine(): Motor {
     }
 
     override fun useFossilFuel(): Boolean {
-        return false
+        return true
     }
 }
