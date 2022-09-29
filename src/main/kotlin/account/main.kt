@@ -13,21 +13,26 @@ fun main(){
         saldoInicial = 50.0
     )
 
+    println("Função deposita:")
     andreConta.deposita(100.0);
-    println("Depositando valor:")
     println(andreConta.saldo)
+    println()
 
-    andreConta.saque(50.0)
     println("sacando valor, saldo total: ")
+    andreConta.saque(50.0)
     println(andreConta.saldo)
+    println()
 
     andreConta.transferencia(50.0, andreContaPoupança)
     println("valor da conta do André")
     println(andreConta.saldo)
     println("valor da conta poupança")
     println(andreContaPoupança.saldo)
+    println()
 
+    println("Função deposita:")
     andreConta.deposita(9_000.0)
-    println("valor da conta:")
+    println("Saldo total: ")
     println(andreConta.saldo)
+    println()
 }
