@@ -1,6 +1,8 @@
 package account
 
-class CaixaEletronico() {
+class CaixaEletronico(
+    private val account: Account
+) {
 
     fun abreGaveta(gaveta: Gaveta){
 
@@ -11,21 +13,23 @@ class CaixaEletronico() {
     }
 
     fun valorErrado(valor: Double): Double {
-        return valor
-    }
-
-    fun recebeDinheiro(valor: Double) {
-        println("Sugando $valor reais do cliente...")
-
-        if(valorErrado(valor) != valor){
+        if(valor != valor){
             throw error("Valor recebido não confere")
             devolveDinheiro(valor)
         }
-        println("Valor conferido")
+        return valor
     }
 
-    fun devolveDinheiro(valor: Double) {
+
+    fun recebeDinheiro(valor: Double) {
+        println("Sugando $valor reais do cliente...")
+        valorErrado(valor)
+    }
+
+    fun devolveDinheiro(valor: Double): Double {
+        account.saque(valor)
         println("Devolvendo $valor reais ao cliente...\n")
+        return valor
     }
 
     enum class Gaveta(){
