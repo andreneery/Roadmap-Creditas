@@ -1,8 +1,7 @@
 package account
 
 class CaixaEletronico(
-    private val account: Account
-) {
+){
 
     fun abreGaveta(gaveta: Gaveta){
 
@@ -27,7 +26,6 @@ class CaixaEletronico(
     }
 
     fun devolveDinheiro(valor: Double): Double {
-        account.saque(valor)
         println("Devolvendo $valor reais ao cliente...\n")
         return valor
     }
@@ -36,5 +34,4 @@ class CaixaEletronico(
         DEPOSITO,
         SAQUE
     }
-
 }

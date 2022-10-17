@@ -4,8 +4,8 @@ class Account(
     val titular: String,
     val conta: Int,
     val saldoInicial: Double,
-    private val caixaEletronico: CaixaEletronico
-) {
+){
+    private val caixaEletronico = CaixaEletronico()
     var saldo  = saldoInicial
         protected set
     //protected faz com o valor do saldo nao seja modificado em outros arquivos, mas permite que as classes "filhas"
