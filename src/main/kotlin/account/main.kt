@@ -1,20 +1,20 @@
 package account
 
 fun main(){
-    var andreConta = Account(
+    val andreConta = Account(
         titular = "André",
         conta = 1001,
         saldoInicial = 100.0
     )
 
-    var andreContaPoupança = Account(
+    val andreContaPoupanca = Account(
         titular = "Andrezinho",
         conta = 1002,
         saldoInicial = 50.0
     )
 
     println("Função deposita:")
-    andreConta.deposita(100.0);
+    andreConta.deposita(100.0)
     println(andreConta.saldo)
     println()
 
@@ -23,11 +23,11 @@ fun main(){
     println(andreConta.saldo)
     println()
 
-    andreConta.transferencia(50.0, andreContaPoupança)
+    andreConta.transferencia(50.0, andreContaPoupanca)
     println("valor da conta do André")
     println(andreConta.saldo)
     println("valor da conta poupança")
-    println(andreContaPoupança.saldo)
+    println(andreContaPoupanca.saldo)
     println()
 
     println("Função deposita:")
