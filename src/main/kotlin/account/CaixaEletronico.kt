@@ -1,7 +1,7 @@
 package account
 
-class CaixaEletronico(
-){
+@Suppress("UNREACHABLE_CODE")
+class CaixaEletronico{
 
     fun abreGaveta(gaveta: Gaveta){
 
@@ -10,15 +10,6 @@ class CaixaEletronico(
             Gaveta.SAQUE -> return println("abrindo gaveta para emitir o valor solicitado para saque")
         }
     }
-
-    fun valorErrado(valor: Double): Double {
-        if(valor != valor){
-            throw error("Valor recebido não confere")
-            devolveDinheiro(valor)
-        }
-        return valor
-    }
-
 
     fun recebeDinheiro(valor: Double) {
         println("Sugando $valor reais do cliente...")
@@ -30,8 +21,15 @@ class CaixaEletronico(
         return valor
     }
 
-    enum class Gaveta(){
+    enum class Gaveta{
         DEPOSITO,
         SAQUE
+    }
+
+    private fun valorErrado(valor: Double): Double {
+        if(valor != valor){
+            throw error("Valor recebido não confere")
+        }
+        return valor
     }
 }
