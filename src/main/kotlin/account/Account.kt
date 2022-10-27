@@ -12,13 +12,11 @@ class Account(
     // a utilizem
 
     fun deposita(valor: Double){
-
+         caixaEletronico.abreGaveta(CaixaEletronico.Gaveta.DEPOSITO)
         if(valor > 0.0 && valor <= 10_000.0){
             this.saldo += valor
-            caixaEletronico.abreGaveta(CaixaEletronico.Gaveta.DEPOSITO)
         } else{
             throw error("valor não permitido")
-            caixaEletronico.devolveDinheiro(valor)
         }
     }
 
@@ -29,6 +27,7 @@ class Account(
             caixaEletronico.recebeDinheiro(valor)
             }
             else{
+                caixaEletronico.devolveDinheiro(valor)
                 throw error("valor não permitido")
             }
         }
