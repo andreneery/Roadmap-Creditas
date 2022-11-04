@@ -17,8 +17,9 @@ dependencies {
     implementation("junit:junit:4.13.1")
     implementation("org.junit.jupiter:junit-jupiter:5.8.1")
     implementation("org.testng:testng:7.1.0")
-    testImplementation(kotlin("test"))
+    implementation("com.github.javafaker:javafaker:1.0.2")
     implementation(kotlin("stdlib"))
+    testImplementation(kotlin("test"))
     testImplementation("io.kotlintest:kotlintest-runner-junit5:3.1.7")
 }
 
