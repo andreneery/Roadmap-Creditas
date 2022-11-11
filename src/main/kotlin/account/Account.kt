@@ -12,24 +12,21 @@ class Account(
     // a utilizem
 
     fun deposita(valor: Double){
-         caixaEletronico.abreGaveta(CaixaEletronico.Gaveta.DEPOSITO)
-        if(valor > 0.0 && valor <= 10_000.0){
-            this.saldo += valor
-        } else{
-            throw error("valor não permitido")
+        val validador = valorValidoParaDeposito(valor)
+        if (validador == false){
+           throw error("Valor para deposito não permitido")
         }
+        val depositarValor = caixaEletronico.recebeDinheiro(valor, saldo)
+        saldo = depositarValor
     }
 
     fun saque(valor: Double){
-        if(valor <= saldo && valor > 0.0){
-                this.saldo -= valor
-            caixaEletronico.abreGaveta(CaixaEletronico.Gaveta.SAQUE)
-            caixaEletronico.recebeDinheiro(valor)
+        val validador = valorValidoParaSaque(valor)
+        if(validador == false){
+            throw error("Valor para saque não permitido")
             }
-            else{
-                caixaEletronico.devolveDinheiro(valor)
-                throw error("valor não permitido")
-            }
+        val saqueRealizado = caixaEletronico.emitirDinheiro(valor, saldo)
+        saldo = saqueRealizado
         }
 
     fun transferencia(valor: Double, conta: Account) {
@@ -39,5 +36,19 @@ class Account(
         else {
             throw error("saldo em conta insuficiente")
         }
+    }
+
+    private fun valorValidoParaDeposito(valor: Double): Boolean {
+        if(valor > 0.0 && valor <= 10_000.0){
+            return true
+        }
+        return false
+    }
+
+    private fun valorValidoParaSaque(valor: Double): Boolean{
+        if(valor <= saldo && valor > 0.0){
+            return true
+        }
+        return false
     }
 }

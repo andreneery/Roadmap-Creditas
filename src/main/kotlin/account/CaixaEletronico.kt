@@ -8,24 +8,28 @@ class CaixaEletronico{
         return when(gaveta){
             Gaveta.DEPOSITO -> "abrindo gaveta para receber valor para deposito"
             Gaveta.SAQUE -> "abrindo gaveta para emitir o valor solicitado para saque"
+            Gaveta.DEVOLUCAO -> "Abrindo gaveta para devolver dinheiro"
         }
     }
 
-    fun recebeDinheiro(valor: Double): String {
-        if(valor != valorErrado(valor)){
-            return "Operação encerrada"
+    fun recebeDinheiro(valor: Double, saldo: Double): Double {
+        if (valor != valorErrado(valor)) {
+            Gaveta.DEVOLUCAO
+            throw error("valor para deposito imcompatível com o solicitado ")
         }
-        return  "Recebendo a quantia de R$${valor} do cliente..."
+        abreGaveta(Gaveta.DEPOSITO)
+        return saldo + valor
     }
 
-    fun devolveDinheiro(valor: Double): String {
-
-        return "Devolvendo $valor reais ao cliente...\n"
+    fun emitirDinheiro(valor: Double, saldo: Double):Double{
+        abreGaveta(Gaveta.SAQUE)
+        return saldo - valor
     }
 
     enum class Gaveta{
         DEPOSITO,
-        SAQUE
+        SAQUE,
+        DEVOLUCAO
     }
 
     private fun valorErrado(valor: Double): Double {
@@ -33,5 +37,12 @@ class CaixaEletronico{
            return error("Valor recebido não confere")
         }
         return valor
+    }
+
+    private fun verificarValorValido(saldo: Double): Boolean {
+        if(saldo > 0.0 && saldo <= 10_000.0){
+            return true
+        }
+        return false
     }
 }
