@@ -63,7 +63,7 @@ class AccountTest{
             account.deposita(-200.0)
         }
 
-        assertEquals(error.message, "valor não permitido")
+        assertEquals(error.message, "Valor para deposito não permitido")
         assertEquals(expected, account.saldo)
         // encontrado bug, que mesmo ele retornando o erro esperado, ele fazia o deposito mesmo assim
     }
@@ -81,7 +81,7 @@ class AccountTest{
             account.deposita(-100.0)
         }
 
-        assertEquals(error.message, "valor não permitido")
+        assertEquals(error.message, "Valor para deposito não permitido")
         assertEquals(expected, account.saldo)
 
     }
@@ -99,7 +99,7 @@ class AccountTest{
             account.deposita(10_100.0)
         }
 
-        assertEquals(error.message, "valor não permitido")
+        assertEquals(error.message, "Valor para deposito não permitido")
         assertEquals(expected, account.saldo)
     }
 
@@ -116,7 +116,7 @@ class AccountTest{
             account.deposita(10_100.0)
         }
 
-        assertEquals(error.message, "valor não permitido")
+        assertEquals(error.message, "Valor para deposito não permitido")
         assertEquals(expected, account.saldo)
     }
 
@@ -147,7 +147,7 @@ class AccountTest{
             account.saque(250.0)
         }
 
-        assertEquals(error.message, "valor não permitido")
+        assertEquals(error.message, "Valor não permitido")
         assertEquals(expected, account.saldo)
     }
 
@@ -164,7 +164,7 @@ class AccountTest{
             account.saque(250.0)
         }
 
-        assertEquals(error.message, "valor não permitido")
+        assertEquals(error.message, "Valor não permitido")
         assertEquals(expected, account.saldo)
     }
 
@@ -182,7 +182,7 @@ class AccountTest{
             account.saque(-250.0)
         }
 
-        assertEquals(error.message, "valor não permitido")
+        assertEquals(error.message, "Valor não permitido")
         assertEquals(expected, account.saldo)
     }
 
@@ -200,9 +200,8 @@ class AccountTest{
             account.saque(-250.0)
         }
 
-        assertEquals(error.message, "valor não permitido")
+        assertEquals(error.message, "Valor não permitido")
         assertEquals(expected, account.saldo)
-        //encontrado um bug na parte dos if na função saque
     }
 
     @Test
@@ -249,7 +248,7 @@ class AccountTest{
             val function = accountAndre.transferencia(-500.0, accountJulia)
         }
 
-        assertEquals(error.message, "valor não permitido")
+        assertEquals(error.message, "Valor não permitido")
         assertEquals(expectedJulia, accountJulia.saldo)
         accountAndre.saldo.shouldBe(expectedAndre)
     }
@@ -275,7 +274,7 @@ class AccountTest{
             accountAndre.transferencia(10_000.1, accountJulia)
         }
 
-        assertEquals(error.message, "valor não permitido")
+        assertEquals(error.message, "Valor não permitido")
         assertEquals(expectAndre, accountAndre.saldo)
         assertEquals(expectJulia, accountJulia.saldo)
     }
@@ -301,7 +300,7 @@ class AccountTest{
             accountAndre.transferencia(1_000.0, accountJulia)
         }
 
-        assertEquals(error.message, "valor não permitido")
+        assertEquals(error.message, "Valor não permitido")
         assertEquals(expectAndre, accountAndre.saldo)
         assertEquals(expectJulia, accountJulia.saldo)
     }

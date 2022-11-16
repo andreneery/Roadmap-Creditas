@@ -23,7 +23,7 @@ class Account(
     fun saque(valor: Double){
         val validador = valorValidoParaSaque(valor)
         if(validador == false){
-            throw error("Valor para saque não permitido")
+            throw error("Valor não permitido")
             }
         val saqueRealizado = caixaEletronico.emitirDinheiro(valor, saldo)
         saldo = saqueRealizado

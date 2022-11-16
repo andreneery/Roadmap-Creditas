@@ -17,6 +17,13 @@ class CaixaEletronicoTest {
     }
 
     @Test
+    fun `quando chamada a funcao gaveta devolucao, ira retornar mensagem para devolver o valor`(){
+        val saque = caixaEletronico.abreGaveta(CaixaEletronico.Gaveta.DEVOLUCAO)
+        val expected = "Abrindo gaveta para devolver dinheiro"
+        assertEquals(expected = expected, actual = saque)
+    }
+
+    @Test
     fun `quando chamada a funcao gaveta saque, irá retornar mensagem para emitir o valor`(){
         val saque = caixaEletronico.abreGaveta(CaixaEletronico.Gaveta.SAQUE)
         val expected = "abrindo gaveta para emitir o valor solicitado para saque"
@@ -25,24 +32,28 @@ class CaixaEletronicoTest {
 
     @Test
     fun `quando chamada a funcao recebe dinheiro, irá retornar mensagem de recebimento de quantia`(){
-        val recebeQuantia = caixaEletronico.recebeDinheiro(valor = 5.0)
-        val expected = "Recebendo a quantia de R$5.0 do cliente..."
-        assertEquals(expected = expected, actual = recebeQuantia)
+        val saldo = 50.0
+        val recebeDinheiro = caixaEletronico.recebeDinheiro(5.0, saldo)
+        val expected = 55.0
+        assertEquals(expected, recebeDinheiro)
+
     }
 
     @Test
     fun `quando a funcao recebe dinheiro der erro, irá retornar uma exception`(){
         val error = assertFailsWith<Throwable> {
-            caixaEletronico.recebeDinheiro(error("Valor recebido não confere"))
+            caixaEletronico.recebeDinheiro(error("valor para deposito imcompatível com o solicitado"), 55.0)
         }
 
-        assertEquals(error.message, "Valor recebido não confere")
+        assertEquals(error.message, "valor para deposito imcompatível com o solicitado")
     }
 
     @Test
-    fun `quando chamada a funcao devolve dinheiro, irá retornar mensagem de devolucao`(){
-        val devolveDinheiro = caixaEletronico.devolveDinheiro(700.0)
-        val expected = "Devolvendo 700.0 reais ao cliente...\n"
-        assertEquals(expected = expected, actual = devolveDinheiro)
+    fun `testando a funcao emtir dinheiro`(){
+        val saldo = 50.0
+        val emitir = caixaEletronico.emitirDinheiro(10.0, saldo)
+        val expected = 40.0
+
+        assertEquals(expected, emitir)
     }
 }

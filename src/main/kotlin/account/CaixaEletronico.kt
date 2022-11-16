@@ -15,8 +15,9 @@ class CaixaEletronico{
     fun recebeDinheiro(valor: Double, saldo: Double): Double {
         if (valor != valorErrado(valor)) {
             Gaveta.DEVOLUCAO
-            throw error("valor para deposito imcompatível com o solicitado ")
+            throw error("valor para deposito imcompatível com o solicitado")
         }
+        verificarValorValido(valor)
         abreGaveta(Gaveta.DEPOSITO)
         return saldo + valor
     }
@@ -39,10 +40,10 @@ class CaixaEletronico{
         return valor
     }
 
-    private fun verificarValorValido(saldo: Double): Boolean {
-        if(saldo > 0.0 && saldo <= 10_000.0){
-            return true
+    private fun verificarValorValido(valor: Double): String {
+        if(valor > 0.0 && valor <= 10_000.0){
+            return "Valor informado ao caixa permitido"
         }
-        return false
+        return throw error("Operação não permitida")
     }
 }
