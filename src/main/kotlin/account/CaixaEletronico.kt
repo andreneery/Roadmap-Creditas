@@ -1,7 +1,8 @@
 package account
 
-@Suppress("UNREACHABLE_CODE")
-class CaixaEletronico{
+class CaixaEletronico(
+    private val account: Account
+){
 
     fun abreGaveta(gaveta: Gaveta): String {
 
@@ -12,19 +13,22 @@ class CaixaEletronico{
         }
     }
 
-    fun recebeDinheiro(valor: Double, saldo: Double): Double {
+    fun recebeDinheiro(valor: Double): String {
         if (valor != valorErrado(valor)) {
             Gaveta.DEVOLUCAO
             throw error("valor para deposito imcompatível com o solicitado")
         }
-        verificarValorValido(valor)
+        verificarValorDeposito(valor)
         abreGaveta(Gaveta.DEPOSITO)
-        return saldo + valor
+        account.deposita(valor)
+        return "valor depositado com sucesso"
     }
 
-    fun emitirDinheiro(valor: Double, saldo: Double):Double{
+    fun emitirDinheiro(valor: Double): String {
+        verificaValorSaque(valor)
         abreGaveta(Gaveta.SAQUE)
-        return saldo - valor
+        account.saque(valor)
+        return "saque realizado com sucesso"
     }
 
     enum class Gaveta{
@@ -40,10 +44,19 @@ class CaixaEletronico{
         return valor
     }
 
-    private fun verificarValorValido(valor: Double): String {
+    private fun verificarValorDeposito(valor: Double): String {
         if(valor > 0.0 && valor <= 10_000.0){
             return "Valor informado ao caixa permitido"
         }
-        return throw error("Operação não permitida")
+        Gaveta.DEVOLUCAO
+        return throw error("Deposito não compartivel")
+    }
+
+    private fun verificaValorSaque(valor: Double): String {
+        if(valor >=  0.0){
+            return "Valor informado ao caixa permitido"
+        }
+        Gaveta.DEVOLUCAO
+        return throw error("Saque não permitido")
     }
 }
