@@ -8,12 +8,7 @@ class Account(
         protected set
 
     fun deposita(valor: Double){
-        val verificaValor = valorValidoParaDeposito(valor)
-        if(verificaValor){
             this.saldo += valor
-        } else{
-            throw error("valor não permitido")
-        }
     }
 
     fun saque(valor: Double){
@@ -34,14 +29,6 @@ class Account(
             throw error("saldo em conta insuficiente")
         }
     }
-
-    private fun valorValidoParaDeposito(valor: Double): Boolean{
-        if(valor > 0.0 && valor <= 10_000.0){
-            return true
-        }
-        return false
-    }
-
     private fun valorValidoSaque(valor:Double):Boolean{
         if(valor <= saldo && valor > 0.0){
             return true

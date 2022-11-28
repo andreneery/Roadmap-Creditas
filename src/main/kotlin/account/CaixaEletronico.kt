@@ -1,62 +1,28 @@
 package account
 
 class CaixaEletronico(
-    private val account: Account
-){
+    private val account: Account,
+    private val gaveta: Gaveta
+) {
 
-    fun abreGaveta(gaveta: Gaveta): String {
-
-        return when(gaveta){
-            Gaveta.DEPOSITO -> "abrindo gaveta para receber valor para deposito"
-            Gaveta.SAQUE -> "abrindo gaveta para emitir o valor solicitado para saque"
-            Gaveta.DEVOLUCAO -> "Abrindo gaveta para devolver dinheiro"
-        }
-    }
-
-    fun recebeDinheiro(valor: Double): String {
-        if (valor != valorErrado(valor)) {
-            Gaveta.DEVOLUCAO
-            throw error("valor para deposito imcompatível com o solicitado")
-        }
-        verificarValorDeposito(valor)
-        abreGaveta(Gaveta.DEPOSITO)
-        account.deposita(valor)
+    fun recebeDinheiro(valorAccount: Double, valorDeposito: Double): String {
+        conferirValores(valorAccount, valorDeposito)
+        gaveta.abreGaveta(Operacao.DEPOSITO, valorAccount)
+        account.deposita(valorAccount)
         return "valor depositado com sucesso"
     }
 
     fun emitirDinheiro(valor: Double): String {
-        verificaValorSaque(valor)
-        abreGaveta(Gaveta.SAQUE)
+        gaveta.abreGaveta(Operacao.SAQUE, valor)
         account.saque(valor)
         return "saque realizado com sucesso"
     }
 
-    enum class Gaveta{
-        DEPOSITO,
-        SAQUE,
-        DEVOLUCAO
-    }
-
-    private fun valorErrado(valor: Double): Double {
-        if(valor != valor){
-           return error("Valor recebido não confere")
+    private fun conferirValores(valorAccount: Double, valorDeposito: Double): String {
+        if (valorAccount != valorDeposito) {
+            Operacao.DEVOLUCAO
+            return error("Valor recebido não confere com valor informado")
         }
-        return valor
-    }
-
-    private fun verificarValorDeposito(valor: Double): String {
-        if(valor > 0.0 && valor <= 10_000.0){
-            return "Valor informado ao caixa permitido"
-        }
-        Gaveta.DEVOLUCAO
-        return throw error("Deposito não compartivel")
-    }
-
-    private fun verificaValorSaque(valor: Double): String {
-        if(valor >=  0.0){
-            return "Valor informado ao caixa permitido"
-        }
-        Gaveta.DEVOLUCAO
-        return throw error("Saque não permitido")
+        return "transação permitida"
     }
 }
