@@ -2,7 +2,7 @@ package account
 class Account(
     val titular: String,
     val conta: Int,
-    val saldoInicial: Double,
+    val saldoInicial: Double
 ){
     var saldo  = saldoInicial
         protected set
