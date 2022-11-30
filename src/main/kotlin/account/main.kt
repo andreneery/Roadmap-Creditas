@@ -14,12 +14,12 @@ fun main(){
     )
 
     println("Função deposita:")
-    andreConta.deposita(100.0)
+    andreConta.somarValores(100.0)
     println(andreConta.saldo)
     println()
 
     println("sacando valor, saldo total: ")
-    andreConta.saque(50.0)
+    andreConta.subtrairValores(50.0)
     println(andreConta.saldo)
     println()
 
@@ -31,7 +31,7 @@ fun main(){
     println()
 
     println("Função deposita:")
-    andreConta.deposita(9_000.0)
+    andreConta.somarValores(9_000.0)
     println("Saldo total: ")
     println(andreConta.saldo)
     println()

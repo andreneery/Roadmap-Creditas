@@ -7,13 +7,12 @@ class Account(
     var saldo  = saldoInicial
         protected set
 
-    fun deposita(valor: Double){
+    fun somarValores(valor: Double){
             this.saldo += valor
     }
 
-    fun saque(valor: Double){
-        val verificarValorSaque = valorValidoSaque(valor)
-        if(verificarValorSaque){
+    fun subtrairValores(valor: Double){
+        if(valor > 0.0 && valor <= saldo){
             this.saldo -= valor
         }
         else{
@@ -23,16 +22,10 @@ class Account(
 
     fun transferencia(valor: Double, conta: Account) {
         if (saldo > 0){
-            saque(valor)
-            conta.deposita(valor)}
+            subtrairValores(valor)
+            conta.somarValores(valor)}
         else {
             throw error("saldo em conta insuficiente")
         }
-    }
-    private fun valorValidoSaque(valor:Double):Boolean{
-        if(valor <= saldo && valor > 0.0){
-            return true
-        }
-        return false
     }
 }

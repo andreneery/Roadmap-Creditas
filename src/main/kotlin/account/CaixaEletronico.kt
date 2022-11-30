@@ -1,27 +1,27 @@
 package account
 
 class CaixaEletronico(
-    private val account: Account,
-    private val gaveta: Gaveta
+    private val account: Account
 ) {
+    private val gaveta = Gaveta()
 
-    fun recebeDinheiro(valorAccount: Double, valorDeposito: Double): String {
-        conferirValores(valorAccount, valorDeposito)
-        gaveta.abreGaveta(Operacao.DEPOSITO, valorAccount)
-        account.deposita(valorAccount)
+    fun deposito(valorTerminal: Double, valorDeposito: Double): String {
+        conferirValores(valorTerminal)
+        gaveta.abreGavetaDeposito(valorTerminal, valorDeposito)
+        account.somarValores(valorTerminal)
         return "valor depositado com sucesso"
     }
 
-    fun emitirDinheiro(valor: Double): String {
-        gaveta.abreGaveta(Operacao.SAQUE, valor)
-        account.saque(valor)
+    fun saque(valor: Double): String {
+        conferirValores(valor)
+        account.subtrairValores(valor)
+        gaveta.abreGavetaSaque()
         return "saque realizado com sucesso"
     }
 
-    private fun conferirValores(valorAccount: Double, valorDeposito: Double): String {
-        if (valorAccount != valorDeposito) {
-            Operacao.DEVOLUCAO
-            return error("Valor recebido não confere com valor informado")
+    private fun conferirValores(valorTerminal: Double): String {
+        if (valorTerminal < 0.0 || valorTerminal > 10_000.0) {
+            throw error("Valor informado não permitido")
         }
         return "transação permitida"
     }

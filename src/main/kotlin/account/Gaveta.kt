@@ -1,28 +1,16 @@
 package account
 
 class Gaveta{
-
-    fun abreGaveta(modalidade: Operacao, valorAccount: Double) {
-
-        when(modalidade) {
-            Operacao.DEPOSITO -> if (valorAccount > 0.0 && valorAccount < 10_000.0) {
-                println("Valor compátivel")
-                println("Abrindo Gaveta para depositar valor informado")
-            } else {
-                throw error("valor para deposito não permitido")
-            }
-            Operacao.SAQUE -> if(valorAccount > 0.0){
-                println("abrindo gaveta para emitir o valor solicitado para saque")
-            } else {
-                throw error("valor para saque não permitido")
-            }
-            Operacao.DEVOLUCAO -> println("Abrindo gaveta para devolver dinheiro recebido")
+    fun abreGavetaDeposito(valorTerminal: Double, valorDeposito: Double): String {
+        println("abrindo gaveta para receber deposito")
+        if(valorTerminal != valorDeposito){
+            println("Retornando valor inserido na gaveta")
+            throw error("valores incompatíveis")
         }
+        return "Valores conferidos"
     }
-}
 
-enum class Operacao{
-    DEPOSITO,
-    SAQUE,
-    DEVOLUCAO
+    fun abreGavetaSaque(): String {
+        return "abrindo gaveta para emitir valor solicitado"
+    }
 }
