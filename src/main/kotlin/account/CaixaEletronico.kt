@@ -1,9 +1,10 @@
 package account
 
 class CaixaEletronico(
-    private val account: Account
+    private val account: Account,
+    private val gaveta: Gaveta
 ) {
-    private val gaveta = Gaveta()
+    
 
     fun deposito(valorTerminal: Double, valorDeposito: Double): String {
         conferirValores(valorTerminal)
