@@ -3,7 +3,6 @@ package accountTest
 import account.Account
 import io.kotlintest.shouldBe
 import org.junit.jupiter.api.Test
-import java.lang.Error
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
@@ -22,7 +21,7 @@ class AccountTest{
     }
 
     @Test
-    fun `testando a funcao deposita, sem valor inicial`(){
+    fun `testando a soma de valores, sem valor inicial`(){
         val account = Account(
             titular = "Andre",
             conta = 1,
@@ -30,13 +29,13 @@ class AccountTest{
         )
         val expected = 100.0
 
-        account.deposita(100.0)
+        account.somarValores(100.0)
 
         assertEquals(expected, account.saldo)
     }
 
     @Test
-    fun `testando a funcao deposita, com saldo inicial`(){
+    fun `testando a soma de valores, com saldo inicial`(){
         val account = Account(
             titular = "Andre",
             conta = 1,
@@ -45,83 +44,13 @@ class AccountTest{
 
         val expected = 150.0
 
-        account.deposita(100.0)
+        account.somarValores(100.0)
 
         assertEquals(expected, account.saldo)
     }
 
     @Test
-    fun `testando a funcao deposita, valor negativo`(){
-        val account = Account(
-            titular = "Andre",
-            conta = 1,
-            saldoInicial = 0.0
-        )
-        val expected = 0.0
-
-        val error = assertFailsWith<Throwable> {
-            account.deposita(-200.0)
-        }
-
-        assertEquals(error.message, "valor não permitido")
-        assertEquals(expected, account.saldo)
-        // encontrado bug, que mesmo ele retornando o erro esperado, ele fazia o deposito mesmo assim
-    }
-
-    @Test
-    fun `testando a funcao deposita, valor negativo e saldo inicial`(){
-        val account = Account(
-            titular = "Andre",
-            conta = 1,
-            saldoInicial = 50.0
-        )
-        val expected = 50.0
-
-        val error = assertFailsWith<Throwable> {
-            account.deposita(-100.0)
-        }
-
-        assertEquals(error.message, "valor não permitido")
-        assertEquals(expected, account.saldo)
-
-    }
-
-    @Test
-    fun `Quando depositado mais que 10mil, espera que retorne um error`(){
-        val account = Account(
-            titular = "Andre",
-            conta = 1,
-            saldoInicial = 0.0
-        )
-        val expected = 0.0
-
-        val error = assertFailsWith<Throwable> {
-            account.deposita(10_100.0)
-        }
-
-        assertEquals(error.message, "valor não permitido")
-        assertEquals(expected, account.saldo)
-    }
-
-    @Test
-    fun `Quando depositado 10mil e com saldo inicial, espera que retorne um error e valor inicial mantido`(){
-        val account = Account(
-            titular = "Andre",
-            conta = 1,
-            saldoInicial = 50.00
-        )
-        val expected = 50.0
-
-        val error = assertFailsWith<Throwable> {
-            account.deposita(10_100.0)
-        }
-
-        assertEquals(error.message, "valor não permitido")
-        assertEquals(expected, account.saldo)
-    }
-
-    @Test
-    fun `testando a funcao saque`(){
+    fun `testando a funcao subtrair valores`(){
         val account = Account(
             titular = "Andre",
             conta = 1,
@@ -130,13 +59,13 @@ class AccountTest{
 
         val expected = 50.0
 
-        account.saque(150.0)
+        account.subtrairValores(150.0)
 
         assertEquals(expected, account.saldo)
     }
 
     @Test
-    fun `testando a funcao saque com saldo inicial zerado`(){
+    fun `testando a subtracao de valores com saldo inicial zerado`(){
         val account = Account(
             titular = "Andre",
             conta = 1,
@@ -144,7 +73,7 @@ class AccountTest{
         )
         val expected = 0.0
         val error = assertFailsWith<Throwable> {
-            account.saque(250.0)
+            account.subtrairValores(250.0)
         }
 
         assertEquals(error.message, "valor não permitido")
@@ -152,7 +81,7 @@ class AccountTest{
     }
 
     @Test
-    fun `testando a funcao saque com valor superior que o saldo inicial `(){
+    fun `testando a subtracao de valores com valor superior que o saldo inicial `(){
         val account = Account(
             titular = "Andre",
             conta = 1,
@@ -161,7 +90,7 @@ class AccountTest{
         val expected = 50.0
 
         val error = assertFailsWith<Throwable> {
-            account.saque(250.0)
+            account.subtrairValores(250.0)
         }
 
         assertEquals(error.message, "valor não permitido")
@@ -169,7 +98,7 @@ class AccountTest{
     }
 
     @Test
-    fun `testando a funcao saque passando valor negativo`(){
+    fun `testando subtracao de valores passando valor negativo`(){
         val account = Account(
             titular = "Andre",
             conta = 1,
@@ -179,7 +108,7 @@ class AccountTest{
         val expected = 0.0
 
         val error = assertFailsWith<Throwable> {
-            account.saque(-250.0)
+            account.subtrairValores(-250.0)
         }
 
         assertEquals(error.message, "valor não permitido")
@@ -187,7 +116,7 @@ class AccountTest{
     }
 
     @Test
-    fun `testando a funcao saque com saldo inicial e passando valor negativo`(){
+    fun `testando a subtracao de valores com saldo inicial e passando valor negativo`(){
         val account = Account(
             titular = "Andre",
             conta = 1,
@@ -197,12 +126,11 @@ class AccountTest{
         val expected = 25.0
 
         val error = assertFailsWith<Throwable>{
-            account.saque(-250.0)
+            account.subtrairValores(-250.0)
         }
 
         assertEquals(error.message, "valor não permitido")
         assertEquals(expected, account.saldo)
-        //encontrado um bug na parte dos if na função saque
     }
 
     @Test
@@ -268,7 +196,7 @@ class AccountTest{
             saldoInicial = 150.0
         )
 
-        val expectAndre = 15_000.0
+        val expectAndre = 600.0
         val expectJulia = 150.0
 
         val error = assertFailsWith<Throwable> {
