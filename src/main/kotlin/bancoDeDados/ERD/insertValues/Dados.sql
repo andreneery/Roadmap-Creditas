@@ -22,13 +22,13 @@ INSERT INTO tripulantes_squad (nome, tempo_empresa, cargo, slack, squad_id) VALU
 
 INSERT INTO squad (squad_name, tribo_id) VALUES ("Loans", 1);
 
-INSERT INTO tripulantes_squad (nome, tempo_empresa, cargo, slack, squad_id) VALUES ('Lucas Medeiros', 2.1, 'Software Engineer', 'lucas.santos1', 8);
+INSERT INTO tripulantes_squad (nome, tempo_empresa, cargo, slack, squad_id) VALUES ('Lucas Medeiros', 2.1, 'Software Engineer', 'lucas.santos1', 2);
 
-INSERT INTO tripulantes_squad (nome, tempo_empresa, cargo, slack, squad_id) VALUES ('Rafael Souza da Silva', 3.5, 'Software Engineer', 'rafael.souza', 8);
+INSERT INTO tripulantes_squad (nome, tempo_empresa, cargo, slack, squad_id) VALUES ('Rafael Souza da Silva', 3.5, 'Software Engineer', 'rafael.souza', 2);
 
-INSERT INTO tripulantes_squad (nome, tempo_empresa, cargo, slack, squad_id) VALUES ('Vitor Batista', 2.0, 'Software Engineer', 'vitor.batista', 8);
+INSERT INTO tripulantes_squad (nome, tempo_empresa, cargo, slack, squad_id) VALUES ('Vitor Batista', 2.0, 'Software Engineer', 'vitor.batista', 2);
 
-INSERT INTO tripulantes_squad (nome, tempo_empresa, cargo, slack, squad_id) VALUES ('Carolina Odorize', 0.7, 'Engineeer Lead', 'carolina.odorize', 8);
+INSERT INTO tripulantes_squad (nome, tempo_empresa, cargo, slack, squad_id) VALUES ('Carolina Odorize', 0.7, 'Engineeer Lead', 'carolina.odorize', 2);
 
 --SERIES
 INSERT INTO series (serie_name)
