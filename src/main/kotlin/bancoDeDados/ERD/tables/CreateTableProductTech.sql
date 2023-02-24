@@ -34,5 +34,6 @@ CREATE TABLE series_assistidas(
     matricula int NOT NULL,
     assistiu TIMESTAMP WITH TIME ZONE,
     PRIMARY KEY (serie_id, matricula),
-    FOREIGN KEY (serie_id) REFERENCES series(serie_id)
+    FOREIGN KEY (serie_id) REFERENCES series(serie_id),
+    FOREIGN KEY (matricula) REFERENCES tripulantes_squad(matricula)
 );
