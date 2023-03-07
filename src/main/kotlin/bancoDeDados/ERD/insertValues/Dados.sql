@@ -6,37 +6,65 @@ INSERT INTO product_tech (tribo_name) VALUES ("Auto Equity");
 
 INSERT INTO squad (squad_name, tribo_id) VALUES ("topUp", 1);
 
-INSERT INTO tripulantes_squad (nome, data_contratacao, cargo, slack, squad_id) VALUES ('Andre Nery', '2022-02-07', 'Software Engineer', 'andre.nery', 1);
+INSERT INTO tripulante(nome, data_contratacao, cargo, slack) VALUES ('Andre Nery', '2022-02-07', 'Software Engineer', 'andre.nery');
 
-INSERT INTO tripulantes_squad (nome, data_contratacao, cargo, slack, squad_id) VALUES ('Julia Mayumi', '2019-10-14', 'Software Engineer', 'julia.mayumi', 1);
+INSERT INTO tripulante(nome, data_contratacao, cargo, slack) VALUES ('Julia Mayumi', '2019-10-14', 'Software Engineer', 'julia.mayumi');
 
-INSERT INTO tripulantes_squad (nome, data_contratacao, cargo, slack, squad_id) VALUES ('Renan Kataoka', '2019-10-14', 'Software Engineer', 'renan.kataoka', 1);
+INSERT INTO tripulante(nome, data_contratacao, cargo, slack) VALUES ('Renan Kataoka', '2019-10-14', 'Software Engineer', 'renan.kataoka');
 
-INSERT INTO tripulantes_squad (nome, data_contratacao, cargo, slack, squad_id) VALUES ('Marcelo Rodrigues', '2019-07-22', 'Software Engineer', 'marcelinho', 1);
+INSERT INTO tripulante(nome, data_contratacao, cargo, slack) VALUES ('Marcelo Rodrigues', '2019-07-22', 'Software Engineer', 'marcelinho');
 
-INSERT INTO tripulantes_squad (nome, data_contratacao, cargo, slack, squad_id) VALUES ('Ava Correia', '2021-08-16', 'Software Engineer', 'ava.correia', 1);
+INSERT INTO tripulante(nome, data_contratacao, cargo, slack) VALUES ('Ava Correia', '2021-08-16', 'Software Engineer', 'ava.correia');
 
-INSERT INTO tripulantes_squad (nome, data_contratacao, cargo, slack, squad_id) VALUES ('Izac Cavalheiro', '2021-11-16', 'Engineeer Lead', 'izac.cavalheiro', 1);
+INSERT INTO tripulante(nome, data_contratacao, cargo, slack) VALUES ('Izac Cavalheiro', '2021-11-16', 'Engineeer Lead', 'izac.cavalheiro');
 
-INSERT INTO tripulantes_squad (nome, data_contratacao, cargo, slack, squad_id) VALUES ('Nathalia Romaioli Gonzales', '2020-05-01', 'Product Manager', 'nathalia.gonzales', 1);
+INSERT INTO tripulante(nome, data_contratacao, cargo, slack) VALUES ('Nathalia Romaioli Gonzales', '2020-05-01', 'Product Manager', 'nathalia.gonzales');
 
-INSERT INTO tripulantes_squad (nome, data_contratacao, cargo, slack, squad_id) VALUES ('Eduardo Costa', '2020-11-23', 'Principal Engineer', 'jose.costa', 1);
+INSERT INTO tripulante(nome, data_contratacao, cargo, slack) VALUES ('Eduardo Costa', '2020-11-23', 'Principal Engineer', 'jose.costa');
 
 -- TIME DE LOANS
 
 INSERT INTO squad (squad_name, tribo_id) VALUES ("Loans", 1);
 
-INSERT INTO tripulantes_squad (nome, data_contratacao, cargo, slack, squad_id) VALUES ('Lucas Medeiros', '2021-01-18', 'Software Engineer', 'lucas.santos1', 2);
+INSERT INTO tripulante(nome, data_contratacao, cargo, slack) VALUES ('Lucas Medeiros', '2021-01-18', 'Software Engineer', 'lucas.santos1');
 
-INSERT INTO tripulantes_squad (nome, data_contratacao, cargo, slack, squad_id) VALUES ('Rafael Souza da Silva', '2019-09-23', 'Software Engineer', 'rafael.souza', 2);
+INSERT INTO tripulante(nome, data_contratacao, cargo, slack) VALUES ('Rafael Souza da Silva', '2019-09-23', 'Software Engineer', 'rafael.souza');
 
-INSERT INTO tripulantes_squad (nome, data_contratacao, cargo, slack, squad_id) VALUES ('Vitor Batista', '2022-03-01', 'Software Engineer', 'vitor.batista', 2);
+INSERT INTO tripulante(nome, data_contratacao, cargo, slack) VALUES ('Vitor Batista', '2022-03-01', 'Software Engineer', 'vitor.batista');
 
-INSERT INTO tripulantes_squad (nome, data_contratacao, cargo, slack, squad_id) VALUES ('Carolina Odorize', '2022-07-18', 'Engineeer Lead', 'carolina.odorize', 2);
+INSERT INTO tripulante(nome, data_contratacao, cargo, slack) VALUES ('Carolina Odorize', '2022-07-18', 'Engineeer Lead', 'carolina.odorize');
 
-INSERT INTO tripulantes_squad (nome, data_contratacao, cargo, slack, squad_id) VALUES ('Daniel Leite Meiato', '2022-08-17', 'Product Manager', 'daniel.meiato', 2);
+INSERT INTO tripulante(nome, data_contratacao, cargo, slack) VALUES ('Daniel Leite Meiato', '2022-08-17', 'Product Manager', 'daniel.meiato');
 
-INSERT INTO tripulantes_squad (nome, data_contratacao, cargo, slack, squad_id) VALUES ('Eduardo Costa', '2020-11-23', 'Principal Engineer', 'jose.costa', 2);
+-- TABELA TRIPULANTE_SQUAD
+
+INSERT INTO tripulante_squad(squad_id, matricula) VALUES (1, 1);
+
+INSERT INTO tripulante_squad(squad_id, matricula) VALUES (1, 2);
+
+INSERT INTO tripulante_squad(squad_id, matricula) VALUES (1, 3);
+
+INSERT INTO tripulante_squad(squad_id, matricula) VALUES (1, 4);
+
+INSERT INTO tripulante_squad(squad_id, matricula) VALUES (1, 5);
+
+INSERT INTO tripulante_squad(squad_id, matricula) VALUES (1, 6);
+
+INSERT INTO tripulante_squad(squad_id, matricula) VALUES (1, 7);
+
+INSERT INTO tripulante_squad(squad_id, matricula) VALUES (1, 8);
+
+INSERT INTO tripulante_squad(squad_id, matricula) VALUES (2, 8);
+
+INSERT INTO tripulante_squad(squad_id, matricula) VALUES (2, 9);
+
+INSERT INTO tripulante_squad(squad_id, matricula) VALUES (2, 10);
+
+INSERT INTO tripulante_squad(squad_id, matricula) VALUES (2, 11);
+
+INSERT INTO tripulante_squad(squad_id, matricula) VALUES (2, 12);
+
+INSERT INTO tripulante_squad(squad_id, matricula) VALUES (2, 13);
 
 -- SERIES
 INSERT INTO series (serie_name)
