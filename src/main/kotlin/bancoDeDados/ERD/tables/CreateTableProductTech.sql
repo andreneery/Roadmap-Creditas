@@ -16,15 +16,22 @@ CREATE TABLE squad(
     FOREIGN KEY (tribo_id) REFERENCES product_tech(tribo_id)
 );
 
-CREATE TABLE tripulantes_squad(
+CREATE TABLE tripulante(
     matricula int NOT NULL AUTO_INCREMENT,
     nome varchar(50) NOT NULL,
     data_contratacao date NOT NULL,
     cargo varchar(50) NOT NULL,
     slack varchar(50) NOT NULL,
+    PRIMARY KEY (matricula)
+);
+
+CREATE TABLE tripulante_squad(
+    tripulante_squad_id int NOT NULL AUTO_INCREMENT,
     squad_id int NOT NULL,
-    PRIMARY KEY (matricula),
-    FOREIGN KEY (squad_id) REFERENCES squad(squad_id)
+    matricula int NOT NULL,
+    PRIMARY KEY (tripulante_squad_id),
+    FOREIGN KEY (squad_id) REFERENCES squad(squad_id),
+    FOREIGN KEY (matricula) REFERENCES tripulante(matricula)
 );
 
 CREATE TABLE series(
@@ -39,5 +46,5 @@ CREATE TABLE series_assistidas(
     assistiu date not null,
     PRIMARY KEY (serie_id, matricula),
     FOREIGN KEY (serie_id) REFERENCES series(serie_id),
-    FOREIGN KEY (matricula) REFERENCES tripulantes_squad(matricula)
+    FOREIGN KEY (matricula) REFERENCES tripulante(matricula)
 );
