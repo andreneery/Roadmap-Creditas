@@ -22,3 +22,12 @@ SELECT
 WHERE
     data_contratacao = (SELECT MIN(data_contratacao) FROM TRIBE_EXERCISE.tripulante)
 
+-- EX 4.
+-- Selecionar a pessoa com maior numero de caracteres no nome
+SELECT
+    nome,
+    LENGTH(nome) AS num_caracteres
+    FROM TRIBE_EXERCISE.tripulante
+    ORDER BY num_caracteres DESC
+LIMIT 1;
+
