@@ -31,3 +31,15 @@ SELECT
     ORDER BY num_caracteres DESC
 LIMIT 1;
 
+--EX 5.
+-- Qual a média de pessoas que as Squads tem
+USE TRIBE_EXERCISE;
+SELECT s.squad_name, AVG(count_tripulante)
+FROM (
+  SELECT squad_id, COUNT(matricula) AS count_tripulante
+  FROM tripulante_squad
+  GROUP BY squad_id
+) AS contar_tripulantes
+INNER JOIN squad AS s ON contar_tripulantes.squad_id = s.squad_id
+GROUP BY s.squad_name;
+
