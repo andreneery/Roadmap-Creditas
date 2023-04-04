@@ -58,11 +58,6 @@ GROUP BY squad.squad_name;
 
 --ex 7
 -- Para cada Tribe, qual o total de pessoas trabalhando nela (Cuidado para não contas pessoas cross duas vezes)
--- VOU DEIXAR POR ULTIMO
-
-
--- ex 8
--- Para cada Tribe, qual o total de pessoas trabalhando nela (
 SELECT
 	product_tech.tribo_name,
 	COUNT(tripulante.matricula)
@@ -72,3 +67,40 @@ INNER JOIN tripulante_squad ON squad.squad_id = tripulante_squad.squad_id
 INNER JOIN tripulante ON tripulante_squad.matricula = tripulante.matricula
 GROUP BY product_tech.tribo_name;
 
+--ex 8
+-- Para cada Tribe, qual o total de pessoas desenvolvedoras (Software engineer)
+SELECT
+	product_tech.tribo_name,
+	COUNT(tripulante.matricula)
+FROM product_tech
+INNER JOIN squad ON product_tech.tribo_id = squad.tribo_id
+INNER JOIN tripulante_squad ON squad.squad_id = tripulante_squad.squad_id
+INNER JOIN tripulante ON tripulante_squad.matricula = tripulante.matricula
+where tripulante.cargo = "Software Engineer"
+GROUP BY product_tech.tribo_name;
+
+-- ex 9
+-- Para cada Tribe, quantas pessoas desenvolvedoras estão na Creditas a mais de 1 ano
+USE TRIBE_EXERCISE;
+SELECT
+	product_tech.tribo_name,
+	COUNT(tripulante.matricula)
+FROM product_tech
+INNER JOIN squad ON product_tech.tribo_id = squad.tribo_id
+INNER JOIN tripulante_squad ON squad.squad_id = tripulante_squad.squad_id
+INNER JOIN tripulante ON tripulante_squad.matricula = tripulante.matricula
+where tripulante.cargo = 'Software Engineer' and CURRENT_DATE - data_contratacao > 360
+GROUP BY product_tech.tribo_name;
+
+-- ex 10
+-- Para cada Tribe, qual a média de quantos meses as pessoas desenvolvedoras estão na Creditas
+SELECT
+	product_tech.tribo_name,
+	CONCAT(FLOOR(AVG(DATEDIFF(NOW(), tripulante.data_contratacao) / 365)), ' anos e ',
+    MOD(FLOOR(AVG(DATEDIFF(NOW(), tripulante.data_contratacao) / 30)), 12), ' meses') as media_contratacao
+FROM tripulante
+INNER JOIN tripulante_squad ON tripulante.matricula = tripulante_squad.matricula
+INNER JOIN squad on tripulante_squad.squad_id = squad.squad_id
+inner join product_tech on squad.tribo_id = product_tech.tribo_id
+where tripulante.cargo = 'Software Engineer'
+GROUP BY product_tech.tribo_name;
