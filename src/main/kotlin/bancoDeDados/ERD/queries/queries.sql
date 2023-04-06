@@ -104,3 +104,17 @@ INNER JOIN squad on tripulante_squad.squad_id = squad.squad_id
 inner join product_tech on squad.tribo_id = product_tech.tribo_id
 where tripulante.cargo = 'Software Engineer'
 GROUP BY product_tech.tribo_name;
+
+-- ex 11
+-- Para cada Tribe, quantas séries cada squad assistiu (Cuidado para não contar a mesma série duas vezes numa mesma squad)
+SELECT
+    product_tech.tribo_name,
+    squad.squad_name,
+    COUNT(DISTINCT series.serie_name) AS qtd_series_assistidas
+FROM tripulante
+INNER JOIN series_assistidas ON tripulante.matricula = series_assistidas.matricula
+INNER JOIN series ON series.serie_id = series_assistidas.serie_id
+INNER JOIN tripulante_squad ON tripulante.matricula = tripulante_squad.matricula
+INNER JOIN squad ON squad.squad_id = tripulante_squad.squad_id
+INNER JOIN product_tech ON squad.tribo_id = product_tech.tribo_id
+GROUP BY product_tech.tribo_name, squad.squad_name;
