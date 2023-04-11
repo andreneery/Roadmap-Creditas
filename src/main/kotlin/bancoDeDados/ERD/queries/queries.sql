@@ -118,3 +118,36 @@ INNER JOIN tripulante_squad ON tripulante.matricula = tripulante_squad.matricula
 INNER JOIN squad ON squad.squad_id = tripulante_squad.squad_id
 INNER JOIN product_tech ON squad.tribo_id = product_tech.tribo_id
 GROUP BY product_tech.tribo_name, squad.squad_name;
+
+-- ex 12
+-- Para cada Tribe, com exceção da Squad de top-up, quantas séries cada squad assistiu
+USE TRIBE_EXERCISE;
+SELECT
+    product_tech.tribo_name,
+    squad.squad_name,
+    COUNT(DISTINCT series.serie_name) AS qtd_series_assistidas
+FROM tripulante
+INNER JOIN series_assistidas ON tripulante.matricula = series_assistidas.matricula
+INNER JOIN series ON series.serie_id = series_assistidas.serie_id
+INNER JOIN tripulante_squad ON tripulante.matricula = tripulante_squad.matricula
+INNER JOIN squad ON squad.squad_id = tripulante_squad.squad_id
+INNER JOIN product_tech ON squad.tribo_id = product_tech.tribo_id
+where not squad.squad_name = 'topUp'
+GROUP BY product_tech.tribo_name, squad.squad_name;
+
+-- ex 13
+-- Quem são as pessoas Cross da Tribe (Pessoas que atuam em mais de uma Squad)
+USE TRIBE_EXERCISE;
+SELECT nome
+FROM tripulante
+INNER JOIN tripulante_squad ON tripulante_squad.matricula = tripulante.matricula
+GROUP BY tripulante.matricula
+HAVING COUNT(DISTINCT tripulante_squad.squad_id) > 1;
+
+-- ex 14
+-- Quantas vezes cada série foi assistida por pessoas da Creditas
+USE TRIBE_EXERCISE;
+SELECT serie_name, COUNT(series_assistidas.serie_id) AS vezes_assistida
+FROM series
+LEFT JOIN series_assistidas ON series.serie_id = series_assistidas.serie_id
+GROUP BY series.serie_id;
