@@ -151,3 +151,45 @@ SELECT serie_name, COUNT(series_assistidas.serie_id) AS vezes_assistida
 FROM series
 LEFT JOIN series_assistidas ON series.serie_id = series_assistidas.serie_id
 GROUP BY series.serie_id;
+
+-- ex 15
+-- Quais as 3 séries mais assistidas por pessoas da Creditas e quantas vezes cada uma foi vistas
+USE TRIBE_EXERCISE;
+SELECT serie_name, COUNT(series_assistidas.serie_id) AS vezes_assistida
+FROM series
+LEFT JOIN series_assistidas ON series.serie_id = series_assistidas.serie_id
+GROUP BY series.serie_id
+LIMIT 3;
+
+-- ex 16
+-- Para cada Squad, qual o cargo que assistiu a maior quantidade de séries diferentes e quantas foram
+-- (Ex: Se todas as pessoas desenvolvedoras assistiram a mesma série, então o cargo desenvolvedor só assistiu
+-- 1 série diferente)
+SELECT squad.squad_name,
+tripulante.cargo,
+COUNT(DISTINCT series_assistidas.serie_id)
+	FROM squad
+JOIN tripulante_squad ON squad.squad_id = tripulante_squad.squad_id
+JOIN tripulante ON tripulante_squad.matricula = tripulante.matricula
+LEFT JOIN series_assistidas ON tripulante.matricula = series_assistidas.matricula
+GROUP BY squad.squad_id, tripulante.cargo
+HAVING COUNT(DISTINCT series_assistidas.serie_id) > 1;
+
+-- ex 17
+-- Quais são as séries que 2 ou mais pessoas desenvolvedoras já assistiram
+USE TRIBE_EXERCISE;
+SELECT series.serie_name, COUNT(series_assistidas.serie_id) AS vezes_assistida
+FROM series
+INNER JOIN series_assistidas ON series.serie_id = series_assistidas.serie_id
+INNER JOIN tripulante ON series_assistidas.matricula = tripulante.matricula
+where tripulante.cargo = 'Software Engineer'
+GROUP BY series.serie_id
+having count(distinct tripulante.matricula) >= 2
+LIMIT 3;
+
+-- ex 18
+-- Quais as pessoas que não assistiram séries na Creditas
+SELECT *
+FROM tripulante
+left join series_assistidas ON tripulante.matricula = series_assistidas.matricula
+where series_assistidas.serie_id is NULL;
