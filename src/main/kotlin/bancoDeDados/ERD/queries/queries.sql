@@ -159,7 +159,7 @@ SELECT serie_name, COUNT(series_assistidas.serie_id) AS vezes_assistida
 FROM series
 LEFT JOIN series_assistidas ON series.serie_id = series_assistidas.serie_id
 GROUP BY series.serie_id
-LIMIT 3;
+ORDER BY vezes_assistida DESC LIMIT 3;
 
 -- ex 16
 -- Para cada Squad, qual o cargo que assistiu a maior quantidade de séries diferentes e quantas foram
