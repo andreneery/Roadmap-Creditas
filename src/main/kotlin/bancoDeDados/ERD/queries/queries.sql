@@ -35,14 +35,13 @@ LIMIT 1;
 
 --EX 5.
 -- Qual a média de pessoas que as Squads tem
-SELECT s.squad_name, AVG(count_tripulante)
-FROM (
-  SELECT squad_id, COUNT(matricula) AS count_tripulante
-  FROM tripulante_squad
-  GROUP BY squad_id
-) AS contar_tripulantes
-INNER JOIN squad AS s ON contar_tripulantes.squad_id = s.squad_id
-GROUP BY s.squad_name;
+SELECT
+  product_tech.tribo_name,
+  count(distinct tripulante_squad.matricula) / count(distinct squad.squad_id) as media_tripulantes
+FROM product_tech
+JOIN squad ON product_tech.tribo_id = squad.tribo_id
+JOIN tripulante_squad ON squad.squad_id = tripulante_squad.squad_id
+GROUP BY product_tech.tribo_name;
 
 
 --EX 6
