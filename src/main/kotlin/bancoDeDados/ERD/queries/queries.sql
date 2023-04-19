@@ -60,7 +60,7 @@ GROUP BY squad.squad_name;
 -- Para cada Tribe, qual o total de pessoas trabalhando nela (Cuidado para não contas pessoas cross duas vezes)
 SELECT
 	product_tech.tribo_name,
-	COUNT(tripulante.matricula)
+	COUNT(distinct tripulante.matricula)
 FROM product_tech
 INNER JOIN squad ON product_tech.tribo_id = squad.tribo_id
 INNER JOIN tripulante_squad ON squad.squad_id = tripulante_squad.squad_id
