@@ -159,15 +159,29 @@ ORDER BY vezes_assistida DESC LIMIT 3;
 -- Para cada Squad, qual o cargo que assistiu a maior quantidade de séries diferentes e quantas foram
 -- (Ex: Se todas as pessoas desenvolvedoras assistiram a mesma série, então o cargo desenvolvedor só assistiu
 -- 1 série diferente)
-SELECT squad.squad_name,
-tripulante.cargo,
-COUNT(DISTINCT series_assistidas.serie_id)
-	FROM squad
-JOIN tripulante_squad ON squad.squad_id = tripulante_squad.squad_id
-JOIN tripulante ON tripulante_squad.matricula = tripulante.matricula
-LEFT JOIN series_assistidas ON tripulante.matricula = series_assistidas.matricula
-GROUP BY squad.squad_id, tripulante.cargo
-HAVING COUNT(DISTINCT series_assistidas.serie_id) > 1;
+SELECT
+  squad_name,
+  cargo,
+  series_assistidas
+FROM (
+  SELECT
+    squad.squad_name,
+    tripulante.cargo,
+    COUNT(DISTINCT series_assistidas.serie_id) as series_assistidas,
+    RANK() OVER (PARTITION BY squad.squad_id ORDER BY COUNT(DISTINCT series_assistidas.serie_id) DESC) AS verificar
+  FROM
+    squad
+    INNER JOIN tripulante_squad ON squad.squad_id = tripulante_squad.squad_id
+    INNER JOIN tripulante ON tripulante_squad.matricula = tripulante.matricula
+    INNER JOIN series_assistidas ON tripulante.matricula = series_assistidas.matricula
+  GROUP BY
+    squad.squad_id,
+    squad.squad_name,
+    tripulante.cargo
+) AS subquery
+WHERE
+  verificar = 1;
+
 
 -- ex 17
 -- Quais são as séries que 2 ou mais pessoas desenvolvedoras já assistiram
